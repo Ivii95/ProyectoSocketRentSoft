@@ -73,6 +73,8 @@ public class GestionAlquiler {
             System.out.println("Error al obtener la clase al listar alquileres");
         } catch (IOException e) {
             System.out.println("Error de IO al listar alquileres");
+        } catch (Exception e) {
+
         }
         return alquileres;
     }

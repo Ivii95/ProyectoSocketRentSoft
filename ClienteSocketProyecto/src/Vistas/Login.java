@@ -149,7 +149,6 @@ public class Login extends javax.swing.JDialog {
         Fondo.setRequestFocusEnabled(false);
         Fondo.setVerifyInputWhenFocusTarget(false);
         getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 680));
-        Fondo.getAccessibleContext().setAccessibleParent(null);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -60,35 +60,40 @@ public class GestionPistas {
     }
 
     public DefaultTableModel getModeloReserva(int tabla, ArrayList<Alquiler> alquileres) {
-        modeloPistas.setRowCount(0);
+        try {
+            modeloPistas.setRowCount(0);
 
-        modeloPistas.addRow(new Object[]{"----------------- " + GA.ahora + " -----------------", "----------------- " + GA.ahora + " -----------------", "----------------- " + GA.ahora + " -----------------"});
-        for (int i = 0; i < GA.horas_inicios.length; i++) {
-            if (GA.horas_inicios[i].getHour() > GA.nowTime.getHour()) {//Comprobamos que las horas sean mayor que la actual
+            modeloPistas.addRow(new Object[]{"----------------- " + GA.ahora + " -----------------", "----------------- " + GA.ahora + " -----------------", "----------------- " + GA.ahora + " -----------------"});
+            for (int i = 0; i < GA.horas_inicios.length; i++) {
+                if (GA.horas_inicios[i].getHour() > GA.nowTime.getHour()) {//Comprobamos que las horas sean mayor que la actual
+                    if (alquileres.isEmpty()) {
+                        modeloPistas.addRow(new Object[]{GA.ahora, GA.horas_inicios[i], GA.horas_finales[i]});
+                    } else {
+                        for (int j = 0; j < alquileres.size(); j++) {
+                            if (!alquileres.get(j).horaInicio.equals(GA.horas_inicios[i])) {
+                                modeloPistas.addRow(new Object[]{GA.ahora, GA.horas_inicios[i], GA.horas_finales[i]});
+                                j = alquileres.size();//Hacemos que una vez entre en la condicion se salga para que no se repitan los valores
+                            }
+                        }
+                    }
+                }
+            }
+            modeloPistas.addRow(new Object[]{"----------------- " + GA.tomorrow + " -----------------", "----------------- " + GA.ahora + " -----------------", "----------------- " + GA.ahora + " -----------------"});
+            for (int i = 0; i < GA.horas_inicios.length; i++) {
                 if (alquileres.isEmpty()) {
-                    modeloPistas.addRow(new Object[]{GA.ahora, GA.horas_inicios[i], GA.horas_finales[i]});
+                    modeloPistas.addRow(new Object[]{GA.tomorrow, GA.horas_inicios[i], GA.horas_finales[i]});
                 } else {
                     for (int j = 0; j < alquileres.size(); j++) {
                         if (!alquileres.get(j).horaInicio.equals(GA.horas_inicios[i])) {
-                            modeloPistas.addRow(new Object[]{GA.ahora, GA.horas_inicios[i], GA.horas_finales[i]});
+                            modeloPistas.addRow(new Object[]{GA.tomorrow, GA.horas_inicios[i], GA.horas_finales[i]});
                             j = alquileres.size();//Hacemos que una vez entre en la condicion se salga para que no se repitan los valores
                         }
                     }
                 }
             }
-        }
-        modeloPistas.addRow(new Object[]{"----------------- " + GA.tomorrow + " -----------------", "----------------- " + GA.ahora + " -----------------", "----------------- " + GA.ahora + " -----------------"});
-        for (int i = 0; i < GA.horas_inicios.length; i++) {
-            if (alquileres.isEmpty()) {
-                modeloPistas.addRow(new Object[]{GA.tomorrow, GA.horas_inicios[i], GA.horas_finales[i]});
-            } else {
-                for (int j = 0; j < alquileres.size(); j++) {
-                    if (!alquileres.get(j).horaInicio.equals(GA.horas_inicios[i])) {
-                        modeloPistas.addRow(new Object[]{GA.tomorrow, GA.horas_inicios[i], GA.horas_finales[i]});
-                        j = alquileres.size();//Hacemos que una vez entre en la condicion se salga para que no se repitan los valores
-                    }
-                }
-            }
+
+        } catch (Exception e) {
+            modeloPistas=null;
         }
         return modeloPistas;
     }
@@ -109,6 +114,7 @@ public class GestionPistas {
             }
         }
         return modeloPistasAlquiladas;
+
     }
 
     public ArrayList<Pista> gestionListarPistas() {
@@ -122,6 +128,8 @@ public class GestionPistas {
         } catch (IOException e) {
             System.out.println("Error de IO al listar pistas");
             System.out.println(e.getMessage());
+        } catch (Exception e) {
+
         }
         return pistas;
     }
