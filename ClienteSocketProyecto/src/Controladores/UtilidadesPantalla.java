@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -47,10 +48,12 @@ public class UtilidadesPantalla {
         return hsURL;
     }
 
-    public static void centrarTabla(JTable table,int column) {
-        DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
-        tcr.setHorizontalAlignment(SwingConstants.CENTER);
-        table.getColumnModel().getColumn(column).setCellRenderer(tcr);
+    public static void centrarTablas(JTable aThis) {
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        aThis.setDefaultRenderer(String.class, centerRenderer);
+        aThis.setDefaultRenderer(Integer.class, centerRenderer);
+        aThis.setDefaultRenderer(Object.class, centerRenderer);
     }
 
 }

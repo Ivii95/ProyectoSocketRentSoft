@@ -34,7 +34,6 @@ public class GestionPistas {
         GA.cargarHorasDelDia();
         modeloPistas = crearTabla();
         modeloPistasAlquiladas = crearTabla();
-
     }
 
     public DefaultTableModel crearTabla() {
@@ -62,7 +61,6 @@ public class GestionPistas {
     public DefaultTableModel getModeloReserva(int tabla, ArrayList<Alquiler> alquileres) {
         try {
             modeloPistas.setRowCount(0);
-
             modeloPistas.addRow(new Object[]{"----------------- " + GA.ahora + " -----------------", "----------------- " + GA.ahora + " -----------------", "----------------- " + GA.ahora + " -----------------"});
             for (int i = 0; i < GA.horas_inicios.length; i++) {
                 if (GA.horas_inicios[i].getHour() > GA.nowTime.getHour()) {//Comprobamos que las horas sean mayor que la actual
@@ -70,9 +68,13 @@ public class GestionPistas {
                         modeloPistas.addRow(new Object[]{GA.ahora, GA.horas_inicios[i], GA.horas_finales[i]});
                     } else {
                         for (int j = 0; j < alquileres.size(); j++) {
-                            if (!alquileres.get(j).horaInicio.equals(GA.horas_inicios[i])) {
+                            if (alquileres.get(j).p.num == tabla) {
+                                if (!alquileres.get(j).horaInicio.equals(GA.horas_inicios[i])) {
+                                    modeloPistas.addRow(new Object[]{GA.ahora, GA.horas_inicios[i], GA.horas_finales[i]});
+                                    j = alquileres.size();//Hacemos que una vez entre en la condicion se salga para que no se repitan los valores
+                                }
+                            } else {
                                 modeloPistas.addRow(new Object[]{GA.ahora, GA.horas_inicios[i], GA.horas_finales[i]});
-                                j = alquileres.size();//Hacemos que una vez entre en la condicion se salga para que no se repitan los valores
                             }
                         }
                     }
@@ -84,16 +86,20 @@ public class GestionPistas {
                     modeloPistas.addRow(new Object[]{GA.tomorrow, GA.horas_inicios[i], GA.horas_finales[i]});
                 } else {
                     for (int j = 0; j < alquileres.size(); j++) {
-                        if (!alquileres.get(j).horaInicio.equals(GA.horas_inicios[i])) {
-                            modeloPistas.addRow(new Object[]{GA.tomorrow, GA.horas_inicios[i], GA.horas_finales[i]});
-                            j = alquileres.size();//Hacemos que una vez entre en la condicion se salga para que no se repitan los valores
+                        if (alquileres.get(j).p.num == tabla) {
+                            if (!alquileres.get(j).horaInicio.equals(GA.horas_inicios[i])) {
+                                modeloPistas.addRow(new Object[]{GA.tomorrow, GA.horas_inicios[i], GA.horas_finales[i]});
+                                j = alquileres.size();//Hacemos que una vez entre en la condicion se salga para que no se repitan los valores
+                            }
+                        } else {
+                            modeloPistas.addRow(new Object[]{GA.ahora, GA.horas_inicios[i], GA.horas_finales[i]});
                         }
                     }
                 }
             }
 
         } catch (Exception e) {
-            modeloPistas=null;
+            modeloPistas = null;
         }
         return modeloPistas;
     }

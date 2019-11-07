@@ -10,7 +10,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
 import conexiones.Consultas;
-import java.time.LocalTime;
 
 //@author Ivii
 public class Servidor extends Thread implements Protocolo {

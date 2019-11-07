@@ -18,7 +18,7 @@ public class Conexion {
             //cargar driver
             Class.forName("com.mysql.jdbc.Driver");
             //Establecemos la conexion con la BD
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost/"+nombre,"root","");
+            conexion = DriverManager.getConnection("jdbc:mysql://localhost/"+nombre,"root","Gesinformatica2019*");
 
         } catch (ClassNotFoundException | SQLException ex) {
             System.out.println("Error al crear la conexion SQL");

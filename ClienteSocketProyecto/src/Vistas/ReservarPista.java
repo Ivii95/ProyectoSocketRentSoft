@@ -44,6 +44,8 @@ public class ReservarPista extends javax.swing.JFrame {
             //iniciarOtrosComponentes();
             ponLaAyuda();
             UtilidadesPantalla.resolucionPantalla(this);
+            UtilidadesPantalla.centrarTablas(tblHecha);
+            UtilidadesPantalla.centrarTablas(tblReserva);
             txtNombre.setText("Nombre: " + usuarioReservar.getNombre() + " " + usuarioReservar.getApellidos());
         } catch (Exception e) {
 
@@ -306,47 +308,47 @@ public class ReservarPista extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPista1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPista1ActionPerformed
-        try {
-            tblReserva.setModel(GP.getModeloReserva(1, alquileres));
-            for (int j = 0; j < alquileres.size(); j++) {
-                if (alquileres.get(j).getUsu().getId() == usuarioReservar.getId()) {
-                    tblHecha.setModel(GP.getModeloReservaHecha(1, alquileres));
-                }
+        //try {
+        tblReserva.setModel(GP.getModeloReserva(1, alquileres));
+        for (int j = 0; j < alquileres.size(); j++) {
+            if (alquileres.get(j).getUsu().getId() == usuarioReservar.getId()) {
+                tblHecha.setModel(GP.getModeloReservaHecha(1, alquileres));
             }
-
-            pistaSeleccionada = pistas.get(0);
-        } catch (Exception e) {
         }
+
+        pistaSeleccionada = pistas.get(0);
+        //} catch (Exception e) {
+        //}
         txtPista.setText("1ª Pista");
     }//GEN-LAST:event_btnPista1ActionPerformed
 
     private void btnPista2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPista2ActionPerformed
-        try {
-            tblReserva.setModel(GP.getModeloReserva(2, alquileres));
-            for (int j = 0; j < alquileres.size(); j++) {
-                if (alquileres.get(j).getUsu().getId() == usuarioReservar.getId()) {
-                    tblHecha.setModel(GP.getModeloReservaHecha(2, alquileres));
-                }
+        //try {
+        tblReserva.setModel(GP.getModeloReserva(2, alquileres));
+        for (int j = 0; j < alquileres.size(); j++) {
+            if (alquileres.get(j).getUsu().getId() == usuarioReservar.getId()) {
+                tblHecha.setModel(GP.getModeloReservaHecha(2, alquileres));
             }
-
-            pistaSeleccionada = pistas.get(1);
-        } catch (Exception e) {
         }
+
+        pistaSeleccionada = pistas.get(1);
+        //} catch (Exception e) {
+        //}
         txtPista.setText("2ª Pista");
     }//GEN-LAST:event_btnPista2ActionPerformed
 
     private void btnPista3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPista3ActionPerformed
-        try {
-            tblReserva.setModel(GP.getModeloReserva(3, alquileres));
-            for (int j = 0; j < alquileres.size(); j++) {
-                if (alquileres.get(j).getUsu().getId() == usuarioReservar.getId()) {
-                    tblHecha.setModel(GP.getModeloReservaHecha(3, alquileres));
-                }
+        //try {
+        tblReserva.setModel(GP.getModeloReserva(3, alquileres));
+        for (int j = 0; j < alquileres.size(); j++) {
+            if (alquileres.get(j).getUsu().getId() == usuarioReservar.getId()) {
+                tblHecha.setModel(GP.getModeloReservaHecha(3, alquileres));
             }
-
-            pistaSeleccionada = pistas.get(2);
-        } catch (Exception e) {
         }
+
+        pistaSeleccionada = pistas.get(2);
+        //} catch (Exception e) {
+        //}
         txtPista.setText("3ª Pista");
     }//GEN-LAST:event_btnPista3ActionPerformed
 
