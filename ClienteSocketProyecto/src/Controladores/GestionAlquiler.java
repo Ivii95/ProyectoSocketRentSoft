@@ -78,7 +78,20 @@ public class GestionAlquiler {
         }
         return alquileres;
     }
+    public ArrayList<Alquiler> gestionListarTodosAlquileres() {
+        ArrayList<Alquiler> alquileres = new ArrayList<>();
+        try {
+            flujo_salida.writeUTF(Protocolo.LISTAR_ALQUILERES);
+            alquileres = (ArrayList<Alquiler>) flujoObjEntrada.readObject();
+        } catch (ClassNotFoundException e) {
+            System.out.println("Error al obtener la clase al listar alquileres");
+        } catch (IOException e) {
+            System.out.println("Error de IO al listar alquileres");
+        } catch (Exception e) {
 
+        }
+        return alquileres;
+    }
     public void gestionInsertarAlquiler(Alquiler alqui) {
         try {
             flujo_salida.writeUTF(Protocolo.INSERTAR_ALQUILER);

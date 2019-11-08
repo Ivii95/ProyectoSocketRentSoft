@@ -47,7 +47,7 @@ public class ListadoAlquileres extends javax.swing.JDialog {
         UtilidadesPantalla.centrarTablas(tablaAlquileres);
         usuListado = usu;
         GA = new GestionAlquiler();
-        alquileres = GA.gestionListarAlquileres();
+        alquileres = GA.gestionListarTodosAlquileres();
         Titulo.setText(Titulo.getText() + " " + usuListado.getNombre() + "-" + usuListado.getApellidos());
         rellenarTabla();
     }
