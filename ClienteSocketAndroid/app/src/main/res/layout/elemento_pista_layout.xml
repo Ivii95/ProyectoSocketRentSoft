@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:background="@color/darkThemeBack"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="5dp">
+
+    <ImageView
+        android:id="@+id/imgTipoPista"
+        android:layout_width="334dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        tools:srcCompat="@tools:sample/avatars"
+        android:layout_marginTop="5dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:background="@color/darkThemeFront">
+        <TextView
+            android:id="@+id/numPista"
+            style="@style/BasicField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Número de la pista: " />
+
+        <TextView
+            android:id="@+id/tipoPista"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tipo  de la pista: "
+            style="@style/BasicField"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>

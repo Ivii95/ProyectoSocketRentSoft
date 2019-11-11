@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainMainFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.clientesocketandroid.main.fragment.MainFragment">
+
+    <LinearLayout
+        android:id="@+id/allScreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/darkThemeBack"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+
+        <EditText
+            android:id="@+id/userFile"
+            style="@style/BasicField"
+            android:background="@color/darkThemeFront"
+            android:hint="User"
+            android:inputType="textPersonName"></EditText>
+
+        <EditText
+            android:id="@+id/passwordFile"
+            style="@style/BasicField"
+            android:background="@color/darkThemeFront"
+            android:hint="Pass"
+            android:inputType="textPassword"></EditText>
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            style="@style/BasicField"
+            android:background="@color/darkThemeFront"
+            android:text="@string/logIn"></Button>
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

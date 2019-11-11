@@ -1,4 +1,7 @@
 <resources>
-    <string name="app_name">ClienteSocketAndroid</string>
+    <string name="app_name">RentSoft</string>
+    <string name="logIn">Entrar</string>
+    <string name="title_activity_lista_pistas">ListaPistasActivity</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_lista">ListaActivity</string>
 </resources>
