@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -50,28 +51,28 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        if (view.getId()==login.getId()){
+        if (view.getId() == login.getId()) {
             loginTry(view);
         }
     }
 
-    public void loginTry(View view){
+    public void loginTry(View view) {
         EditText textField = getView().findViewById(R.id.userFile);
         EditText passField = getView().findViewById(R.id.passwordFile);
         //TODO llamar a un metodo de login
-        boolean isLoginCorrect=c.gestionLOG(textField.getText().toString(),passField.getText().toString());
+        boolean isLoginCorrect = c.gestionLOG(textField.getText().toString(), passField.getText().toString());
         //isLoginCorrect = UsersRepository.login(textField.getText().toString(),passField.getText().toString());
         /*AlertDialog.Builder dialog =*/
         new AlertDialog.Builder(getActivity())
                 .setTitle("Login")
-                .setMessage(isLoginCorrect?"correcto":"nocorrecto")
+                .setMessage(isLoginCorrect ? "correcto" : "nocorrecto")
                 .create();
         if (isLoginCorrect)
-            startActivity(
-                    new Intent(getActivity(), ListaPistaActivity.class)
-            );
+            startActivity(new Intent(getActivity(), ListaPistaActivity.class));
+        else {
+            Toast.makeText(this.getContext(), "Usuario o contrseña incorrecta", Toast.LENGTH_LONG).show();
+        }
     }
-
 
 
 }

@@ -25,9 +25,8 @@ public class AlquilerRepository {
         for (int i = 0; i < horas.size(); i++) {
             if (horas.get(i).p.num == pistaSelec.getNum()) {
                 if (horas.get(i).getDia().equals(LocalDate.now())) {
-                    if (horas.get(i).getHoraInicio().getHour() > LocalTime.now().getHour()+1) {
+                    if (horas.get(i).getHoraInicio().getHour() > LocalTime.now().getHour() + 1) {
                         if (alquileres.isEmpty()) {
-                            //Log.i("info", horas.get(i).horaInicio + "");
                             horasReales.add(horas.get(i));
                         } else {
                             for (int j = 0; j < alquileres.size(); j++) {
@@ -45,27 +44,19 @@ public class AlquilerRepository {
                     }
                 } else {
                     if (alquileres.isEmpty()) {
-                        //Log.i("info", horas.get(i).horaInicio + "");
                         horasReales.add(horas.get(i));
                     } else {
                         for (int j = 0; j < alquileres.size(); j++) {
                             if (GA.tomorrow.equals(alquileres.get(j).dia)) {
-                                Log.i("info", horas.get(i).horaInicio + "!=" + alquileres.get(j).getHoraInicio());
                                 if (!horas.get(i).getHoraInicio().equals(alquileres.get(j).getHoraInicio())) {
-                                    Log.i("info", horas.get(i).horaInicio + "!=" + alquileres.get(j).getHoraInicio());
                                     horasReales.add(horas.get(i));
                                     j = alquileres.size();
                                 }
-                            } else {
-                                horasReales.add(horas.get(i));
-                                j = alquileres.size();
                             }
                         }
                     }
                 }
             }
-
-
         }
         return horasReales;
     }

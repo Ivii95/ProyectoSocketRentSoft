@@ -2,6 +2,8 @@ package com.example.clientesocketandroid.main.adapter;
 
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,13 +51,31 @@ public class HorarioAdapter extends RecyclerView.Adapter<HorarioAdapter.ViewHold
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(callerActivity, "pista reservada " + horasLista.get(position).horaInicio, Toast.LENGTH_SHORT).show();
-                GA.gestionInsertarAlquiler(horasLista.get(position));
-                Intent in = new Intent(callerActivity, ListaPistaActivity.class);
-                callerActivity.startActivity(in);
+                AlertDialog.Builder dialogo1 = new AlertDialog.Builder(callerActivity);
+                dialogo1.setTitle("Señor/a: " + horasLista.get(position).usu.getNombre() + "-" + horasLista.get(position).getUsu().getApellidos());
+                dialogo1.setMessage("¿ Seguro de que desea reservar la pista" + horasLista.get(position).p.num + " a las " + horasLista.get(position).horaInicio +
+                        " el dia " + horasLista.get(position).getDia() + "?");
+                dialogo1.setCancelable(false);
+                dialogo1.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialogo1, int id) {
+                        GA.gestionInsertarAlquiler(horasLista.get(position));
+                        Toast.makeText(callerActivity, "reservada a las " + horasLista.get(position).horaInicio + " el dia " + horasLista.get(position).getDia()
+                                + " en la pista" + horasLista.get(position).p.num, Toast.LENGTH_LONG).show();
+                        Intent in = new Intent(callerActivity, ListaPistaActivity.class);
+                        callerActivity.startActivity(in);
+                    }
+                });
+                dialogo1.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialogo1, int id) {
+
+                    }
+                });
+                dialogo1.show();
             }
+
         });
     }
+
 
     @Override
     public int getItemCount() {

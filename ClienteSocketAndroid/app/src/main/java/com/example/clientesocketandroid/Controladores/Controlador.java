@@ -80,7 +80,7 @@ public class Controlador implements Protocolo {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return true;
+        return userOn;
     }
 
     public void gestionSalir() {

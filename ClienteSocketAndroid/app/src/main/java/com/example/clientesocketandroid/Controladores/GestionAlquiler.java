@@ -80,18 +80,24 @@ public class GestionAlquiler {
             alquiRecibido = (ArrayList<Alquiler>) flujoObjEntrada.readObject();
             if (!alquiRecibido.isEmpty()) {
                 for (int i = 0; i < alquiRecibido.size(); i++) {
-                    if (alquiRecibido.get(i).getDia().equals(ahora) || alquiRecibido.get(i).getDia().equals(tomorrow)) {
-                        if (alquiRecibido.get(i).p.num == pistaSelec.num) {
+                    if (alquiRecibido.get(i).p.num == pistaSelec.num) {
+                        if (alquiRecibido.get(i).getDia().equals(ahora)) {
+                            alquileres.add(alquiRecibido.get(i));//Añadimos el alquiler del dia de hoy y de mañana que son los que se pueden contratar.
+                        }
+                        if (alquiRecibido.get(i).getDia().equals(tomorrow)) {
                             alquileres.add(alquiRecibido.get(i));//Añadimos el alquiler del dia de hoy y de mañana que son los que se pueden contratar.
                         }
                     }
                 }
             }
-        } catch (ClassNotFoundException e) {
+        } catch (
+                ClassNotFoundException e) {
             System.out.println("Error al obtener la clase al listar alquileres");
-        } catch (IOException e) {
+        } catch (
+                IOException e) {
             System.out.println("Error de IO al listar alquileres");
-        } catch (Exception e) {
+        } catch (
+                Exception e) {
 
         }
         return alquileres;
