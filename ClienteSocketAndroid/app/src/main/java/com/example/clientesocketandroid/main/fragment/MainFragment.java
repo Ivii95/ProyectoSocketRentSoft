@@ -12,8 +12,6 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
-import com.example.clientesocketandroid.Controladores.Controlador;
 import com.example.clientesocketandroid.R;
 import com.example.clientesocketandroid.main.activity.ListaPistaActivity;
 
@@ -32,7 +30,6 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     @Nullable
     @Override
     public View onCreateView(@Nullable LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
         return inflater.inflate(R.layout.main_fragment, container, true);
     }
 
@@ -59,7 +56,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     public void loginTry(View view) {
         EditText textField = getView().findViewById(R.id.userFile);
         EditText passField = getView().findViewById(R.id.passwordFile);
-        //TODO llamar a un metodo de login
+        // LLama a un metodo de login
         boolean isLoginCorrect = c.gestionLOG(textField.getText().toString(), passField.getText().toString());
         //isLoginCorrect = UsersRepository.login(textField.getText().toString(),passField.getText().toString());
         /*AlertDialog.Builder dialog =*/

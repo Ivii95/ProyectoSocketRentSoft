@@ -17,5 +17,4 @@ public class PistaRepository {
         arraypistas=GP.gestionListarPistas();
         return arraypistas;
     }
-
 }

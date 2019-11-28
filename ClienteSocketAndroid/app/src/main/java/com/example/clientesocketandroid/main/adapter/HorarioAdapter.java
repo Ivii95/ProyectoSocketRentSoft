@@ -1,6 +1,7 @@
 package com.example.clientesocketandroid.main.adapter;
 
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -43,6 +44,7 @@ public class HorarioAdapter extends RecyclerView.Adapter<HorarioAdapter.ViewHold
         );
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull HorarioAdapter.ViewHolder holder, final int position) {
         holder.txtHoraInicio.setText(" Hora comienzo: ".concat(horasLista.get(position).getHoraInicio().toString()));
@@ -56,7 +58,7 @@ public class HorarioAdapter extends RecyclerView.Adapter<HorarioAdapter.ViewHold
                 dialogo1.setMessage("¿ Seguro de que desea reservar la pista" + horasLista.get(position).p.num + " a las " + horasLista.get(position).horaInicio +
                         " el dia " + horasLista.get(position).getDia() + "?");
                 dialogo1.setCancelable(false);
-                dialogo1.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                dialogo1.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() { //SII
                     public void onClick(DialogInterface dialogo1, int id) {
                         GA.gestionInsertarAlquiler(horasLista.get(position));
                         Toast.makeText(callerActivity, "reservada a las " + horasLista.get(position).horaInicio + " el dia " + horasLista.get(position).getDia()
@@ -65,7 +67,7 @@ public class HorarioAdapter extends RecyclerView.Adapter<HorarioAdapter.ViewHold
                         callerActivity.startActivity(in);
                     }
                 });
-                dialogo1.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                dialogo1.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() { //NOO
                     public void onClick(DialogInterface dialogo1, int id) {
 
                     }

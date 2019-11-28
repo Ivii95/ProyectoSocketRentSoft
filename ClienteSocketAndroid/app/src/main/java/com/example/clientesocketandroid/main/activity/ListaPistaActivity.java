@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.clientesocketandroid.R;
 import com.example.clientesocketandroid.data.PistaRepository;
 import com.example.clientesocketandroid.main.adapter.PistaAdapter;
-import Modelos.*;
 
 public class ListaPistaActivity extends AppCompatActivity {
 
@@ -22,8 +21,7 @@ public class ListaPistaActivity extends AppCompatActivity {
 
         pistasView = findViewById(R.id.listaView);
         pistasView.setLayoutManager(new LinearLayoutManager(this));
-        pistasView.setAdapter( new PistaAdapter(PistaRepository.pistas(),this));
-
+        pistasView.setAdapter( new PistaAdapter(PistaRepository.pistas(),this));//THIS EL FLUJO DE LA APP
     }
 
 }
