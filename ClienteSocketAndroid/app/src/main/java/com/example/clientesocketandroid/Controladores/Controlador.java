@@ -43,8 +43,11 @@ public class Controlador implements Protocolo {
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                 .permitNetwork().build());
         try {
-
-            skCliente = new Socket("192.168.1.100", 5000);
+            try {
+                skCliente = new Socket("192.168.1.100", 5000);
+            } catch (IOException e) {
+                skCliente = new Socket("localhost", 5000);
+            }
             flujoObjSalida = new ObjectOutputStream(skCliente.getOutputStream());
             flujoObjEntrada = new ObjectInputStream(skCliente.getInputStream());
             flujo_entrada = new DataInputStream(skCliente.getInputStream());
